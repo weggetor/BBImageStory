@@ -1,0 +1,12 @@
+<section class="BBImageStoryList">
+    <ul>
+        <li ng-repeat="story in vm.stories" ng-click="vm.viewStory(story)" style="list-style-type: none;cursor: pointer;cursor: hand;">
+            <img style="float: left;padding: 0 10px 10px 0;" ng-src="/dnnimagehandler.ashx?mode=file&File={{vm.moduleProperties.HomeDirectory}}{{story.StoryImage}}&amp;w=200" />
+            <div>
+                <h4 ng-bind="story.Title"/>
+                <p ng-bind-html="vm.getHtml(story.Story.substring(0,500)+' ...')" style="text-align: justify;border-bottom: #c3c3c3 1px solid;padding-bottom: 10px;" />
+            </div>
+            <div style="clear: both"></div>
+        </li>
+    </ul>
+</section>

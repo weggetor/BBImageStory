@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BasicSettings.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="CollapseAll.Text" xml:space="preserve">
+    <value>Collapse All</value>
+  </data>
+  <data name="DeleteItem.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="EditItem.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="AddStory.Text" xml:space="preserve">
+    <value>Add Story</value>
+  </data>
+  <data name="CancelEdit.Text" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="SaveEdit.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="LastModifiedByUserID.Text" xml:space="preserve">
+    <value>Last modified by</value>
+  </data>
+  <data name="LastPublished.Text" xml:space="preserve">
+    <value>Last publish date</value>
+  </data>
+  <data name="lblEndDate.Help" xml:space="preserve">
+    <value>Enter the date publishing should end</value>
+  </data>
+  <data name="lblEndDate.Text" xml:space="preserve">
+    <value>End Date</value>
+  </data>
+  <data name="lblStartDate.Help" xml:space="preserve">
+    <value>Enter the date publishing should start</value>
+  </data>
+  <data name="lblStartDate.Text" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="lblStory.Help" xml:space="preserve">
+    <value>Enter Story Content here</value>
+  </data>
+  <data name="lblStory.Text" xml:space="preserve">
+    <value>Story</value>
+  </data>
+  <data name="lblTitle.Help" xml:space="preserve">
+    <value>Enter Story Title here</value>
+  </data>
+  <data name="lblTitle.Text" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ViewEdit.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="CreatedByUserID.Text" xml:space="preserve">
+    <value>Created by</value>
+  </data>
+  <data name="CreatedOnDate.Text" xml:space="preserve">
+    <value>on</value>
+  </data>
+  <data name="LastModifiedOnDate.Text" xml:space="preserve">
+    <value>on</value>
+  </data>
+  <data name="lblLanguage.Help" xml:space="preserve">
+    <value>Current selected language</value>
+  </data>
+  <data name="lblLanguage.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CancelAll.Text" xml:space="preserve">
+    <value>Cancel All</value>
+  </data>
+  <data name="DropZone.Text" xml:space="preserve">
+    <value>Drop files here</value>
+  </data>
+  <data name="Finish.Text" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="MoreStories.Text" xml:space="preserve">
+    <value>More Stories...</value>
+  </data>
+  <data name="Name.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Progress.Header" xml:space="preserve">
+    <value>Progress</value>
+  </data>
+  <data name="Remove.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RemoveAll.Text" xml:space="preserve">
+    <value>Remove All</value>
+  </data>
+  <data name="SelectedImages.Text" xml:space="preserve">
+    <value>Selected Images:</value>
+  </data>
+  <data name="SelectFiles.Text" xml:space="preserve">
+    <value>Select files</value>
+  </data>
+  <data name="Size.Header" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="UploadAll.Text" xml:space="preserve">
+    <value>Upload All</value>
+  </data>
+  <data name="Upload.Text" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="UploadImages.Text" xml:space="preserve">
+    <value>Upload Story Images</value>
+  </data>
+  <data name="AddImages.Text" xml:space="preserve">
+    <value>Add Images</value>
+  </data>
+  <data name="ddlTemplateType.Text" xml:space="preserve">
+    <value>Template type:</value>
+  </data>
+  <data name="ResetEdit.Text" xml:space="preserve">
+    <value>Reset to default</value>
+  </data>
+  <data name="TemplateRefresh.Hint" xml:space="preserve">
+    <value>After changing the templates you have to refresh the browser cache to see the changes!</value>
+  </data>
+  <data name="txtTemplate.Text" xml:space="preserve">
+    <value>Code:</value>
+  </data>
+  <data name="AddTemplate.Text" xml:space="preserve">
+    <value>Add Template</value>
+  </data>
+  <data name="ddlTemplateName.Text" xml:space="preserve">
+    <value>Template File:</value>
+  </data>
+  <data name="Created.Header" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="Edited.Header" xml:space="preserve">
+    <value>Last Edited</value>
+  </data>
+  <data name="ImageContent.Placeholder" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="Images.Text" xml:space="preserve">
+    <value>Images:</value>
+  </data>
+  <data name="ImageTitle.Placeholder" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="NoStory.Text" xml:space="preserve">
+    <value>No stories availiable</value>
+  </data>
+  <data name="Story.Header" xml:space="preserve">
+    <value>Story</value>
+  </data>
+  <data name="Actions.Header" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Amount.Text" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="ddlTemplateTypeOption_Css.Text" xml:space="preserve">
+    <value>Stylesheet</value>
+  </data>
+  <data name="ddlTemplateTypeOption_List.Text" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="ddlTemplateTypeOption_View.Text" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ProcessingProgress.Text" xml:space="preserve">
+    <value>Processing progress</value>
+  </data>
+  <data name="Status.Header" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Date.Error" xml:space="preserve">
+    <value>Date must be in valid format or empty!</value>
+  </data>
+  <data name="Title.Error" xml:space="preserve">
+    <value>Title must not be empty!</value>
+  </data>
+  <data name="DeleteImage.DataError" xml:space="preserve">
+    <value>Error deleting story image</value>
+  </data>
+  <data name="DeleteStory.Confirm" xml:space="preserve">
+    <value>Do you really want to delete the story with title: 000 ?</value>
+  </data>
+  <data name="DeleteStory.DataError" xml:space="preserve">
+    <value>Error deleting story</value>
+  </data>
+  <data name="GetImages.DataError" xml:space="preserve">
+    <value>Error loading story images</value>
+  </data>
+  <data name="GetStories.DataError" xml:space="preserve">
+    <value>Error loading stories</value>
+  </data>
+  <data name="GetStory.DataError" xml:space="preserve">
+    <value>Error loading story</value>
+  </data>
+  <data name="GetTemplate.DataError" xml:space="preserve">
+    <value>Error loading template</value>
+  </data>
+  <data name="GetTemplates.DataError" xml:space="preserve">
+    <value>Error loading templates</value>
+  </data>
+  <data name="SaveStory.DataError" xml:space="preserve">
+    <value>Error saving story</value>
+  </data>
+  <data name="SaveTemplate.DataError" xml:space="preserve">
+    <value>Error saving template</value>
+  </data>
+  <data name="UpdateImages.DataError" xml:space="preserve">
+    <value>Error updating story images</value>
+  </data>
+  <data name="SaveStory.DataOK" xml:space="preserve">
+    <value>The story is saved successfully!</value>
+  </data>
+  <data name="UpdateStory.DataOK" xml:space="preserve">
+    <value>The story is updated successfully!</value>
+  </data>
+  <data name="DeleteStory.DataOK" xml:space="preserve">
+    <value>Story is successfully deleted</value>
+  </data>
+  <data name="EditStories.Text" xml:space="preserve">
+    <value>Edit stories</value>
+  </data>
+  <data name="EditStory.Text" xml:space="preserve">
+    <value>Edit story</value>
+  </data>
+  <data name="Bootstrap3.Text" xml:space="preserve">
+    <value>Your module is running in a skin that is not bootstrap 3 based! Some functionalities (especially in editmode) may not work!</value>
+  </data>
+  <data name="CreateStory.Text" xml:space="preserve">
+    <value>Create Story</value>
+  </data>
+  <data name="Explanation.Text" xml:space="preserve">
+    <value>&lt;h4&gt;Getting started:&lt;/h4&gt;&lt;p&gt;First make sure that you saved the QuickSettings. Select templates for View and list display (at the beginning there is only one template for every type available. You can create more later!) and define which image size you want to display. Select also which stories should be shown in the module: all stories, all portal stories or all module stories.&lt;/p&gt;&lt;p&gt;In the next step, create a new story by hitting the &lt;i&gt;create story&lt;/i&gt; button. You can always change between edit and view mode by clicking the pencil in the module action menu (hit Shift F5 if not visible).&lt;/p&gt;&lt;p&gt;There are three sample stories available which could be loaded via &lt;i&gt;Import Content&lt;/i&gt;.The samples are stored in Templates folder of portal 0 and contain all images and designs for the sample. Give them a try, you can delete the sample stories easily afterwards!&lt;p&gt;&lt;p&gt;&lt;b&gt;Now have fun with my BBImageStory module!&lt;/b&gt;&lt;/p&gt;</value>
+  </data>
+</root>

@@ -1,0 +1,74 @@
+﻿[JavaScript:{ jsname:"AngularJS"}]
+[JavaScript:{ jsname:"angular-route"}]
+[JavaScript:{ jsname:"angular-animate"}]
+[JavaScript:{ jsname:"angular-sanitize"}]
+[JavaScript:{ jsname:"angular-ng-toast"}]
+[Css:{ path: "~/Resources/libraries/angular-ng-toast/01_05_06/ngToast.min.css"}]
+[Css:{ path: "~/Resources/libraries/angular-ng-toast/01_05_06/ngToast-animations.min.css"}]
+[JavaScript:{ jsname:"angular-ng-progress"}]
+[Css:{ path: "~/Resources/libraries/angular-ng-progress/01_00_07/ngProgress.min.css"}]
+[JavaScript:{ jsname:"angular-ui-sortable"}]
+[JavaScript:{ jsname:"angular-file-upload"}]
+[JavaScript:{ jsname:"angular-ui-codemirror"}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/app.js", priority:40}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/dnnLabel.js", priority:100}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/ngThumb.js", priority:100}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/imageStoryService.js", priority:100}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/listController.js", priority:100}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/viewController.js", priority:100}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/editController.js", priority:100}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/uploadController.js", priority:100}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/templateController.js", priority:100}]
+
+[Css:{ path: "~/Resources/Shared/components/CodeEditor/lib/codemirror.css"}]
+[JavaScript: { path: "~/Resources/Shared/components/CodeEditor/lib/codemirror.js", priority:101}]
+[JavaScript: { path: "~/Resources/Shared/components/CodeEditor/mode/xml/xml.js", priority:102}]
+[JavaScript: { path: "~/Resources/Shared/components/CodeEditor/mode/javascript/javascript.js", priority:102}]
+[JavaScript: { path: "~/Resources/Shared/components/CodeEditor/mode/css/css.js", priority:102}]
+[JavaScript: { path: "~/Resources/Shared/components/CodeEditor/mode/htmlmixed/htmlmixed.js", priority:103}]
+
+<div id="imageStoryApp[ModuleContext:ModuleId]">
+    <div ng-view></div>
+    <toast></toast>
+</div>
+<script>
+    angular.element(document).ready(function () {
+
+        function init(appName, moduleId, apiPath) {
+            var sf = $.ServicesFramework(moduleId);
+            var httpHeaders = { "ModuleId": sf.getModuleId(), "TabId": sf.getTabId(), "RequestVerificationToken": sf.getAntiForgeryValue() };
+            var localAppName = appName + moduleId;
+            var application = angular.module(localAppName, [appName])
+                .constant("serviceRoot", sf.getServiceRoot(apiPath))
+                .constant("moduleProperties", '[ModuleProperties:All]')
+                .config(function($httpProvider,$routeProvider) {
+                    // Extend $httpProvider with serviceFramework headers
+                    angular.extend($httpProvider.defaults.headers.common, httpHeaders);
+                   
+                    // get the location of your javascript file during run time 
+                    // using jQuery by parsing the DOM for the 'src' attribute that referred it
+                    var jsFileLocation = $('script[src*="BBImageStory/js/app"]').attr('src');  // the js file path
+                    jsFileLocation = jsFileLocation.replace('app.js', '');   // the js folder path
+                    if (jsFileLocation.indexOf('?') > -1) {
+                        jsFileLocation = jsFileLocation.substr(0, jsFileLocation.indexOf('?'));
+                    }
+                    $routeProvider
+                        .when("/list", {templateUrl: jsFileLocation + "List/[ModuleProperties:List]", controller: "listController",controllerAs: "vm"})
+                        .when("/view", {templateUrl: jsFileLocation + "View/[ModuleProperties:View]", controller: "viewController", controllerAs: "vm"})
+                        .when("/view/:StoryId", {templateUrl: jsFileLocation + "View/[ModuleProperties:View]",controller: "viewController",controllerAs: "vm"})
+                        .when("/view/:StoryId/:Index", {templateUrl: jsFileLocation + "View/[ModuleProperties:View]",controller: "viewController",controllerAs: "vm"})
+                        .when("/edit", {templateUrl: jsFileLocation + "edit.html",controller: "editController",controllerAs: "vm"})
+                        .when("/edit/:StoryId", {templateUrl: jsFileLocation + "edit.html",controller: "editController",controllerAs: "vm"})
+                        .when("/upload/:StoryId", {templateUrl: jsFileLocation + "upload.html",controller: "uploadController",controllerAs: "vm"})
+                        .when("/templates", {templateUrl: jsFileLocation + "templates.html",controller: "templateController",controllerAs: "vm"})
+                        .when("/templates/:TemplateId", {templateUrl: jsFileLocation + "templates.html",controller: "templateController",controllerAs: "vm"})
+                        .otherwise({redirectTo: '/view'});
+                });
+            return application;
+        };
+
+        var app = init("imageStoryApp", [ModuleContext:ModuleId], "BBImageStory_Module");
+        var moduleContainer = document.getElementById("imageStoryApp[ModuleContext:ModuleId]");
+        angular.bootstrap(moduleContainer, [app.name]);
+    });
+</script>

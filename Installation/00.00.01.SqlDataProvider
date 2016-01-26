@@ -1,0 +1,101 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_Story]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   BEGIN
+      CREATE TABLE {databaseOwner}[{objectQualifier}BBImageStory_Story] ( 
+         StoryId INT NOT NULL IDENTITY (1,1),
+         ModuleId INT NULL,
+         PortalId INT NULL,
+		 ContentItemID INT NULL,
+         StartDate DATETIME NULL,
+         EndDate DATETIME NULL,
+         LastPublishedDate DATETIME NULL,
+         CreatedByUserID INT NULL,
+         CreatedOnDate DATETIME NULL,
+         LastModifiedByUserID INT NULL,
+         LastModifiedOnDate DATETIME NULL
+      )
+      ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_Story] ADD CONSTRAINT PK_{objectQualifier}BBImageStory_Story PRIMARY KEY CLUSTERED  (StoryId ASC)
+   END
+GO
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_ForeignImage]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   BEGIN
+      CREATE TABLE {databaseOwner}[{objectQualifier}BBImageStory_ForeignImage] ( 
+         ImageId INT NULL,
+         ForeignId INT NOT NULL,
+         ForeignToken NCHAR(20) NOT NULL,
+         ViewOrder INT NOT NULL DEFAULT (0) 
+      )
+	  CREATE CLUSTERED INDEX IDX_{objectQualifier}ViewOrder ON {databaseOwner}[{objectQualifier}BBImageStory_ForeignImage] (ViewOrder ASC) 
+   END
+GO
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_Image]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   BEGIN
+      CREATE TABLE {databaseOwner}[{objectQualifier}BBImageStory_Image] ( 
+         ImageId INT NOT NULL IDENTITY (1,1),
+         FileId INT NULL,
+         TextPosition INT NULL
+      )
+      ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_Image] ADD CONSTRAINT PK_{objectQualifier}BBImageStory_Image PRIMARY KEY CLUSTERED  (ImageId ASC) 
+   END
+GO
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_ImageLang]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   BEGIN
+      CREATE TABLE {databaseOwner}[{objectQualifier}BBImageStory_ImageLang] ( 
+         ImageId INT NULL,
+         Language CHAR(5) NOT NULL DEFAULT '' ,
+         ShortDescription NVARCHAR(500) NOT NULL DEFAULT '' ,
+         LongDescription NVARCHAR(MAX) NOT NULL DEFAULT '' 
+      )
+	  CREATE CLUSTERED INDEX IDX_{objectQualifier}ImageLang ON {databaseOwner}[{objectQualifier}BBImageStory_ImageLang] (ImageId,Language)
+   END
+GO
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_StoryLang]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   BEGIN
+      CREATE TABLE {databaseOwner}[{objectQualifier}BBImageStory_StoryLang] ( 
+         StoryId INT NULL,
+         Language CHAR(5) NOT NULL DEFAULT '' ,
+         Title NVARCHAR(200) NULL,
+         Story NVARCHAR(MAX) NULL
+      )
+	  CREATE CLUSTERED INDEX IDX_{objectQualifier}StoryLang ON {databaseOwner}[{objectQualifier}BBImageStory_StoryLang] (StoryId,Language) 
+   END
+GO
+
+IF NOT EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}ModuleStories' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_Story] WITH NOCHECK ADD CONSTRAINT FK_{objectQualifier}ModuleStories FOREIGN KEY ( ModuleId ) REFERENCES {databaseOwner}[{objectQualifier}Modules] ( ModuleID ) ON DELETE SET NULL
+GO
+IF NOT EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}PortalStories' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_Story] WITH NOCHECK ADD CONSTRAINT FK_{objectQualifier}PortalStories FOREIGN KEY ( PortalId ) REFERENCES {databaseOwner}[{objectQualifier}Portals] ( PortalID ) ON DELETE SET NULL
+GO
+IF NOT EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}StoryImages' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_ForeignImage] WITH NOCHECK ADD CONSTRAINT FK_{objectQualifier}StoryImages FOREIGN KEY ( ForeignId ) REFERENCES {databaseOwner}[{objectQualifier}BBImageStory_Story] ( StoryId ) ON DELETE CASCADE
+GO
+IF NOT EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}ImageStories' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_ForeignImage] WITH NOCHECK ADD CONSTRAINT FK_{objectQualifier}ImageStories FOREIGN KEY ( ImageId ) REFERENCES {databaseOwner}[{objectQualifier}BBImageStory_Image] ( ImageId ) ON DELETE CASCADE
+GO
+IF NOT EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}ImageFile' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_Image] WITH NOCHECK ADD CONSTRAINT FK_{objectQualifier}ImageFile FOREIGN KEY ( FileId ) REFERENCES {databaseOwner}[{objectQualifier}Files] ( FileId ) ON DELETE CASCADE
+GO
+IF NOT EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}ImageLocalization' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_ImageLang] WITH NOCHECK ADD CONSTRAINT FK_{objectQualifier}ImageLocalization FOREIGN KEY ( ImageId ) REFERENCES {databaseOwner}[{objectQualifier}BBImageStory_Image] ( ImageId ) ON DELETE CASCADE
+GO
+IF NOT EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}StoryLocalization' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_StoryLang] WITH NOCHECK ADD CONSTRAINT FK_{objectQualifier}StoryLocalization FOREIGN KEY ( StoryId ) REFERENCES {databaseOwner}[{objectQualifier}BBImageStory_Story] ( StoryId ) ON DELETE CASCADE
+GO
+
+/************************************************************/
+/*****              SqlDataProvider                     *****/
+/************************************************************/

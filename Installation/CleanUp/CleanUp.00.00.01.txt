@@ -1,0 +1,8 @@
+//
+// Usage:
+// If you want a file to be deleted simply add a file path + Name on ONE line
+//
+// Note: A line starting with // OR ' will be regarded as comment 
+//
+// Example:
+//DesktopModules\BBBreed\file.txt

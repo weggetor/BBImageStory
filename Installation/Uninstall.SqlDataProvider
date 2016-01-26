@@ -1,0 +1,37 @@
+﻿IF EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}StoryImages' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_ForeignImage] DROP CONSTRAINT FK_{objectQualifier}StoryImages
+GO
+IF EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}StoryLocalization' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_StoryLang] DROP CONSTRAINT FK_{objectQualifier}StoryLocalization
+GO
+IF EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}ImageStories' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_ForeignImage] DROP CONSTRAINT FK_{objectQualifier}ImageStories
+GO
+IF EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}ImageLocalization' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_ImageLang] DROP CONSTRAINT FK_{objectQualifier}ImageLocalization
+GO
+IF EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}ImageFile' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_Image] DROP CONSTRAINT FK_{objectQualifier}ImageFile
+GO
+IF EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}ModuleStories' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_Story] DROP CONSTRAINT FK_{objectQualifier}ModuleStories
+GO
+IF EXISTS (SELECT 1 FROM sys.objects where name='FK_{objectQualifier}PortalStories' and type='F')
+   ALTER TABLE {databaseOwner}[{objectQualifier}BBImageStory_Story] DROP CONSTRAINT FK_{objectQualifier}PortalStories
+GO
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_Story]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   DROP TABLE {databaseOwner}[{objectQualifier}BBImageStory_Story]
+go
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_ForeignImage]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   DROP TABLE {databaseOwner}[{objectQualifier}BBImageStory_ForeignImage]
+go
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_StoryLang]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   DROP TABLE {databaseOwner}[{objectQualifier}BBImageStory_StoryLang]
+go
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_Image]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   DROP TABLE {databaseOwner}[{objectQualifier}BBImageStory_Image]
+go
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = object_id(N'{databaseOwner}[{objectQualifier}BBImageStory_ImageLang]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+   DROP TABLE {databaseOwner}[{objectQualifier}BBImageStory_ImageLang]
+go

@@ -1,0 +1,58 @@
+﻿[JavaScript:{ jsname:"AngularJS"}]
+[JavaScript: { path: "~/DesktopModules/BBImageStory/js/quicksettings.js", priority:40}]
+<div id="BBImageStory-QuickSettings-[ModuleContext:ModuleId]" class="BBImageStory_QuickSettings">
+    <div ng-controller="quickSettingsController as vm">
+        <div class="form-group">
+            <label>[Resx:{key:"lblWidth"}]</label>
+            <input type="text" ng-model="vm.settings.ImageWidth" class="dnnFormInput" />
+        </div>
+        <div class="form-group">
+            <label>[Resx:{key:"lblPartitioning"}]</label>
+            <select name="ddlPartitioning" ng-model="vm.settings.Partitioning">
+                <option value="0">[Resx:{key:"ddlPartitioningNone"}]</option>
+                <option value="1">[Resx:{key:"ddlPartitioningModule"}]</option>
+                <option value="2">[Resx:{key:"ddlPartitioningPortal"}]</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Templates:</label>
+            <div style="padding-left: 20px;">
+                <div>
+                    <label for="ddlViewTemplate">View template:</label>
+                    <select name="ddlViewTemplate" ng-model="vm.settings.View">
+                        <option ng-repeat="viewOption in vm.settings.ViewTemplates">{{viewOption}}</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="ddlListTemplate">List template:</label>
+                    <select name="ddlListTemplate" ng-model="vm.settings.List">
+                        <option ng-repeat="listOption in vm.settings.ListTemplates">{{listOption}}</option>
+                    </select>
+                </div>
+                <a href="#templates" class="btn btn-xs btn-default" ng-show="vm.moduleProperties.Admin">[Resx:{key:"cmdEdit"}]</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    angular.element(document).ready(function () {
+
+        function init(appName, moduleId, apiPath) {
+            var sf = $.ServicesFramework(moduleId);
+            var httpHeaders = { "ModuleId": sf.getModuleId(), "TabId": sf.getTabId(), "RequestVerificationToken": sf.getAntiForgeryValue() };
+            var localAppName = appName + moduleId;
+            var application = angular.module(localAppName, [appName])
+                .constant("serviceRoot", sf.getServiceRoot(apiPath))
+                .constant("moduleProperties", '[ModuleProperties:All]')
+                .config(function($httpProvider) {
+                    angular.extend($httpProvider.defaults.headers.common, httpHeaders);
+                });
+            return application;
+        };
+
+        var app = init("quickSettings", [ModuleContext:ModuleId], "BBImageStory_Module");
+        app.constant("moduleId", '[ModuleContext:ModuleId]');
+        var moduleContainer = document.getElementById("BBImageStory-QuickSettings-[ModuleContext:ModuleId]");
+        angular.bootstrap(moduleContainer, [app.name]);
+    });
+</script>

@@ -1,0 +1,33 @@
+﻿<section>
+    <div class="dnnFormMessage dnnFormInfo">
+        {{vm.localize.TemplateRefresh_Hint}}
+    </div>
+    <div class="form-group">
+        <label for="ddlTemplateType">{{vm.localize.ddlTemplateType_Text}}</label>
+        <select ng-model="vm.template.Type" ng-change="vm.selectedTypeChange()" id="ddlTemplateType">
+            <option value="view">{{vm.localize.ddlTemplateTypeOption_View_Text}}</option>
+            <option value="list">{{vm.localize.ddlTemplateTypeOption_List_Text}}</option>
+            <option value="css">{{vm.localize.ddlTemplateTypeOption_Css_Text}}</option>
+        </select>
+        <button type="button" class="btn btn-xs btn-info" ng-click="vm.newTemplate()" ng-disabled="vm.template.Mode=='text/css'" ng-hide="vm.newMode"><span class="glyphicon glyphicon-plus"></span> {{vm.localize.AddTemplate_Text}}</button>
+    </div>
+    <div class="form-group" ng-hide="vm.template.Mode=='text/css'">
+        <label for="ddlTemplateName">{{vm.localize.ddlTemplateName_Text}}</label>
+        <select ng-model="vm.template.FileName" ng-change="vm.selectedNameChange()" id="ddlTemplateName" ng-hide="vm.newMode">
+            <option ng-repeat="option in vm.templates" value="{{option}}">{{option}}</option>
+        </select>
+        <input type="text" ng-model="vm.template.FileName" cols="30" ng-show="vm.newMode" />
+        <button type="button" class="btn btn-xs btn-warning" ng-click="vm.cancelTemplate()" ng-show="vm.newMode"><span class="glyphicon glyphicon-cross"></span> {{vm.localize.CancelEdit_Text}}</button>
+    </div>
+    <div class="form-group">
+        <label for="txtTemplate">{{vm.localize.txtTemplate_Text}}</label>
+        <textarea ui-codemirror ng-model="vm.template.Content" ui-codemirror-opts="vm.editorOptions" id="txtTemplate"></textarea>
+    </div>
+    <button type="button" class="btn btn-xs btn-success" ng-click="vm.saveTemplate()"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.localize.SaveEdit_Text}}</button>
+    <button type="button" class="btn btn-xs btn-primary" ng-click="vm.loadTemplate(true)"><span class="glyphicon glyphicon-pushpin"></span> {{vm.localize.ResetEdit_Text}}</button>
+    <button type="button" class="btn btn-xs btn-warning" ng-click="vm.endTemplates()"><span class="glyphicon glyphicon-eye-open"></span> {{vm.localize.CancelEdit_Text}}</button>
+</section>
+
+
+
+

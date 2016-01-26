@@ -1,0 +1,29 @@
+<article class="BBImageStory" ng-cloak>
+    <div ng-hide="vm.story == null">
+        <a ng-href="#edit/{{vm.story.StoryId}}" class="btn btn-xs btn-primary" ng-show="vm.editable"><span class="glyphicon glyphicon-pencil"></span></a>
+        <h2 ng-bind="vm.story.Title" style="display:inline"></h2>
+        <div ng-bind-html="vm.getHtml(vm.story.Story)"></div>
+        <div class="BBImageStorySlider" style="width:{{vm.imageWidth}}px;">
+            <div>
+                <img ng-src="/dnnimagehandler.ashx?mode=file&amp;File={{vm.moduleProperties.HomeDirectory}}{{vm.activeImage.Folder}}{{vm.activeImage.FileName}}&w={{vm.imageWidth}}" />
+            </div>
+            <span class="arrow back" ng-show="vm.activeImage"><a ng-click="vm.goIndex(vm.prevIndex)"><span>«</span></a></span>
+            <span class="arrow forward" ng-show="vm.activeImage"><a ng-click="vm.goIndex(vm.nextIndex)"><span>»</span></a></span>
+        </div>
+        <p>
+            <b><span ng-bind="vm.activeImage.ShortDescription" /></b>:
+            <span ng-bind-html="vm.getHtml(vm.activeImage.LongDescription)" />
+        </p>
+        <a href="#/list">{{vm.localize.MoreStories_Text}}</a>
+    </div>
+    <div ng-show="vm.noStory">
+        <div class="dnnFormMessage dnnFormWarning" ng-hide="vm.bootstrap3">
+            {{vm.localize.Bootstrap3_Text}}
+        </div>
+        <div class="dnnFormMessage dnnFormInfo" class="ng-cloak">
+            <span ng-bind-html="vm.getHtml(vm.localize.Explanation_Text)" />
+            <a href="#/edit" class="btn btn-success" ng-show="vm.editable"><span class="glyphicon glyphicon-pencil"></span> {{vm.localize.CreateStory_Text}}</a>
+        </div>
+    </div>
+</article>
+

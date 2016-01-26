@@ -1,0 +1,106 @@
+﻿<section class="BBImageStory_Edit">
+    <div ng-hide="vm.editIndex > -1">
+        <div>
+            <h2>{{vm.localize.EditStories_Text}}</h2>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th style="width:100px;"><button type="button" class="btn btn-xs btn-info" ng-click="vm.newStory()" href=" javascript:void(0);"><span class="glyphicon glyphicon-plus"></span></button></th>
+                    <th>{{vm.localize.Story_Header}}</th>
+                    <th>{{vm.localize.Created_Header}}</th>
+                    <th>{{vm.localize.Edited_Header}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="story in vm.stories">
+                    <td>
+                        <button type="button" class="btn btn-xs btn-success" ng-click="vm.editStory(story, $index)" ng-show="vm.editable"><span class="glyphicon glyphicon-pencil"></span></button>
+                        <button type="button" class="btn btn-xs btn-primary" ng-click="vm.viewStory(story)" ng-show="vm.editable"><span class="glyphicon glyphicon-eye-open"></span></button>
+                        <button type="button" class="btn btn-xs btn-danger" ng-click="vm.deleteStory(story, $index)" ng-show="vm.editable"><span class="glyphicon glyphicon-remove"></span></button>
+                    </td>
+                    <td>{{story.Title}}</td>
+                    <td>{{story.CreatedOnDate | date:'short' }}</td>
+                    <td>{{story.LastModifiedOnDate | date:'short' }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr ng-show="vm.stories.Length == 0">
+                    <td colspan="4"><span>{{vm.localize.NoStory_Text}}</span></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div ng-show="vm.editIndex > -1">
+        <div>
+            <h2>{{vm.localize.EditStory_Text}}</h2>
+        </div>
+        <div class="BBToolbar">
+            <button type="button" class="btn btn-xs btn-info" ng-click="vm.addImages()" ng-hide="vm.editIndex == 99999999"><span class="glyphicon glyphicon-picture"></span> {{vm.localize.AddImages_Text}}</button>
+            <button type="button" class="btn btn-xs btn-success" ng-click="vm.saveEdit()" ng-disabled="!storyForm.$valid"><span class="glyphicon glyphicon-floppy-disk"></span> {{vm.localize.SaveEdit_Text}}</button>
+            <button type="button" class="btn btn-xs btn-danger" ng-click="vm.deleteStory(vm.story,vm.editIndex)" ng-hide="vm.editIndex == 99999999"> <span class="glyphicon glyphicon-trash"></span> {{vm.localize.DeleteItem_Text}}</button>
+            <button type="button" class="btn btn-xs btn-primary" ng-click="vm.viewStory(vm.story)" ng-hide="vm.editIndex == 99999999"><span class="glyphicon glyphicon-eye-open"></span> {{vm.localize.ViewEdit_Text}}</button>
+            <button type="button" class="btn btn-xs btn-warning" ng-click="vm.cancelEdit()"><span class="glyphicon glyphicon-list"></span> {{vm.localize.CancelEdit_Text}}</button>
+        </div>
+        <div class="dnnForm" ng-form="storyForm" style="padding-top:10px;">
+            <fieldset>
+                <div class="dnnFormItem" ng-show="vm.moduleProperties.Languages.length > 1">
+                    <div dnn-label text="{{vm.localize.lblLanguage_Text}}" help="{{vm.localize.lblLanguage_Help}}"></div>
+                    <img ng-src="/images/flags/{{vm.moduleProperties.CurrentLanguage}}.gif" />
+                </div>
+                <div class="dnnFormItem">
+                    <div dnn-label text="{{vm.localize.lblTitle_Text}}" help="{{vm.localize.lblTitle_Help}}"></div>
+                    <input type="text" name="txtStoryTitle" ng-model="vm.story.Title" required="" />
+                    <div ng-show="storyForm.txtStoryTitle.$dirty && storyForm.txtStoryTitle.$invalid">
+                        <span style="display: inline;" class="dnnFormMessage dnnFormError" ng-show="storyForm.txtStoryTitle.$error.required">{{vm.localize.Title_Error}}</span>
+                    </div>
+                </div>
+                <div class="dnnFormItem">
+                    <div dnn-label text="{{vm.localize.lblStory_Text}}" help="{{vm.localize.lblStory_Help}}"></div>
+                    <textarea rows="6" ng-model="vm.story.Story" />
+                </div>
+                <div class="dnnFormItem">
+                    <div dnn-label text="{{vm.localize.lblStartDate_Text}}" help="{{vm.localize.lblStartDate_Help}}"></div>
+                    <input type="date" ng-model="vm.story.StartDate" placeholder="yyyy-MM-dd" name="txtStartDate" />
+                    <div ng-show="storyForm.txtStartDate.$dirty && storyForm.txtStartDate.$invalid">
+                        <span style="display: inline;" class="dnnFormMessage dnnFormError" ng-show="storyForm.txtStartDate.$error.date">{{vm.localize.Date_Error}}</span>
+                    </div>
+                </div>
+                <div class="dnnFormItem">
+                    <div dnn-label text="{{vm.localize.lblEndDate_Text}}" help="{{vm.localize.lblEndDate_Help}}"></div>
+                    <input type="date" ng-model="vm.story.EndDate" placeholder="yyyy-MM-dd" />
+                    <div ng-show="storyForm.txtEndDate.$dirty && storyForm.txtEndDate.$invalid">
+                        <span style="display: inline;" class="dnnFormMessage dnnFormError" ng-show="storyForm.txtEndDate.$error.date">{{vm.localize.Date_Error}}</span>
+                    </div>
+                </div>
+            </fieldset>
+            <h3 ng-hide="vm.editIndex == 99999999">{{vm.localize.Images_Text}}</h3>
+            <ul class="sortable" ui-sortable="vm.sortableOptions" ng-model="vm.images">
+                <li ng-repeat="image in vm.images">
+                    <div class="bbimagebox">
+                        <table style="border: none">
+                            <tr>
+                                <td colspan="2"><img ng-src="{{image.ImageUrl}}" /></td>
+                            </tr>
+                            <tr>
+                                <td style="width:20px;">{{$index + 1}}</td>
+                                <td><input type="text" ng-model="image.ShortDescription" placeholder="{{vm.localize.ImageTitle_Placeholder}}" style="width:184px;" /></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><textarea ng-model="image.LongDescription" placeholder="{{vm.localize.ImageContent_Placeholder}}" style=" width:204px;font-size:smaller;line-height:1.2em;" rows="6">&nbsp;</textarea></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:right"><button type="button" class="btn btn-xs btn-danger" ng-click="vm.deleteImage(image,$index)"> <span class="glyphicon glyphicon-trash"></span> {{vm.localize.DeleteItem_Text}}</button></td>
+                            </tr>
+                        </table>
+                    </div>
+                </li>
+            </ul>
+            <div class="dnnssStat dnnClear">
+                <div class="pull-left" ng-hide="vm.story.CreatedByUserID == null"><small>{{vm.localize.CreatedByUserID_Text}} <b>{{vm.story.CreatedByUserName}}</b> {{vm.localize.CreatedOnDate_Text}} <b>{{vm.story.CreatedOnDate | date:'medium'}}</b></small> &bull;&nbsp;</div>
+                <div class="pull-left" ng-hide="vm.story.LastModifiedByUserID == null"> <small>{{vm.localize.LastModifiedByUserID_Text}} <b>{{vm.story.LastModifiedByUserName}}</b> {{vm.localize.LastModifiedOnDate_Text}} <b>{{vm.story.LastModifiedOnDate | date:'medium'}}</b></small></div>
+                <div class="pull-right" ng-hide="vm.story.LastPublishedDate == null"><small>{{vm.localize.LastPublished_Text}} <b>{{vm.story.LastPublishedDate | date:'medium'}}</b></small></div>
+            </div>
+        </div>
+    </div>
+</section>

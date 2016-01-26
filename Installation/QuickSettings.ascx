@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="QuickSettings.ascx.cs" Inherits="Bitboxx.DNNModules.BBImageStory.QuickSettingsDummy" %>
+<!-- Only needed for Manifest generation purposes -->

@@ -1,0 +1,124 @@
+.dnnFormItem input[type="date"] {
+    margin-bottom: 18px;
+    padding: 0 8px;
+    background: #ffffff;
+    border: 1px solid #c9c9c9;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.8), inset 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.8), inset 0px 1px 2px 0px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-size: 12px;
+}
+
+.BBImageStory_Edit div.dnnssStat {
+    border-top: 1px #ccc solid;
+    padding: 1em 0 1em;
+    overflow: hidden;
+}
+
+.BBImageStory_QuickSettings { font-size: 12px;}
+
+.BBToolbar {
+    border-bottom: 1px solid #cccccc;
+    padding: 10px;
+}
+
+/*************************************/
+/* Upload                            */
+/*************************************/
+
+.my-drop-zone { border: dotted 3px lightgray; }
+.another-file-over-class { border: dotted 3px green; }
+canvas {
+    background-color: #f3f3f3;
+    -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+    box-shadow: 3px 3px 3px 0 #e3e3e3;
+    border: 1px solid #c3c3c3;
+    height: 100px;
+    margin: 6px 0 0 6px;
+}
+
+/*************************************/
+/* Images                            */
+/*************************************/
+/* defines the white box with dotted border containing an image and texts */
+.bbimagebox {vertical-align:top; width:220px;text-align:center; background-color:white; border:1px dotted #000000;padding: 5px;margin-bottom: 10px; cursor: pointer;cursor: hand;}
+.bbimagebox input[type="text"], .bbimagebox textarea, .bbimagebox select { margin: 0;padding: 3px;}
+
+/*************************************/
+/* Image Edit                        */
+/*************************************/
+.sortable {  margin: 0; padding: 0;}
+.sortable li { list-style-type: none; margin: 3px; padding: 0; float: left; width: 230px; background-color:white}
+
+/*************************************/
+/* Menu Extension                    */
+/*************************************/
+
+.dnn_mact > li.bbActionMenuEdit > a {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    background-position: -200px -200px;
+    color: white;
+    font-size: 14px;
+}
+ .dnn_mact > li.bbActionMenuEdit > a:hover {
+    background-color: #FFF;
+    background-position: -200px -200px;
+    color: #000;
+}
+
+ .dnn_mact > li.bbActionMenuEdit > a > span { display: inline;}
+
+.bbEditOn  { color: red; }
+.bbEditOff  {color: greenyellow;}
+
+
+/*************************************/
+/* Slider                            */
+/*************************************/
+
+.BBImageStorySlider {
+    display: block;
+    overflow: visible !important;
+    position: relative;
+}
+.BBImageStorySlider span.back {left: 0px;}
+.BBImageStorySlider span.forward {right: 0px;}
+.BBImageStorySlider .arrow {
+    top: 50%;
+    position: absolute;
+    display: block;
+}
+
+.BBImageStorySlider .arrow a {
+    display: block;
+    background: transparent url("Images/polished.png") no-repeat scroll 0% 0%;
+    width: 32px;
+    height: 40px;
+    text-align: center;
+    text-decoration: none;
+    outline: 0px none;
+    margin: -20px 0px 0px;
+}
+.BBImageStorySlider .back a {background-position: left top;}
+.BBImageStorySlider .forward a {background-position: right top;}
+
+.BBImageStorySlider .arrow a span{
+    display: block;
+    line-height: 1px;
+    width: 0px;
+    visibility: hidden;
+}
+.BBImageStorySlider .forward a:hover,
+.BBImageStorySlider .forward a.hover {
+	background-position: right -39px;
+}
+.BBImageStorySlider .back a:hover,
+.BBImageStorySlider .back a.hover {
+	background-position: left -39px;
+}

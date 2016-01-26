@@ -1,0 +1,10 @@
+﻿<h3>BBImageStory</h3>
+<p>Providing one or more stories with multiple images</p>
+<p>
+	bitboxx solutions <br />
+	<a href="mailto:support@bitboxx.net">support@bitboxx.net</a><br />
+	<a href="http://www.bitboxx.net">http://www.bitboxx.net</a><br />
+</p>
+<hr/>
+<b>Version 1.0.0</b>
+<p>Initial Version</p>
