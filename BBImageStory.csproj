@@ -153,6 +153,7 @@
     <Content Include="module.css" />
     <Content Include="js\app.js" />
     <Content Include="Installation\BBAngular.png" />
+    <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Installation\00.00.01.SqlDataProvider" />

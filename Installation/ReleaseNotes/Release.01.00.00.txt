@@ -1,5 +1,5 @@
 ﻿<h3>BBImageStory</h3>
-<p>Providing one or more stories with multiple images</p>
+<p>DNN Module for creating image stories, step-by-step guides or image galleries with subtexts</p>
 <p>
 	bitboxx solutions <br />
 	<a href="mailto:support@bitboxx.net">support@bitboxx.net</a><br />
